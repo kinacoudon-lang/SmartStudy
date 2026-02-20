@@ -13,6 +13,7 @@ function App() {
     <Router>
       <Header />
       <Routes>
+        <h1>SmartStudy Login</h1>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/quiz" element={<Quiz />} />
