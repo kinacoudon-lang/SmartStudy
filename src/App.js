@@ -8,11 +8,14 @@ import Result from "./pages/Result";
 import MyPage from "./pages/MyPage";
 import Header from "./components/Header";
 
+
+
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
+        <h1>SmartStudy Login</h1>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/quiz" element={<Quiz />} />
