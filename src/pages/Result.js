@@ -1,22 +1,40 @@
 import React from "react";
+import { Box, Typography, Button } from "@mui/material";
 import { useLocation, Link } from "react-router-dom";
 
 function Result() {
   const location = useLocation();
-  const { score, total } = location.state || { score: 0, total: 0 };
+  const score = location.state?.score ?? 0;
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>結果</h2>
-      <p>スコア: {score} / {total}</p>
+    <Box p={4}>
+      <Typography variant="h4" gutterBottom>
+        クイズ結果
+      </Typography>
+      <Typography variant="h5" gutterBottom>
+        正答率: {score.toFixed(1)}%
+      </Typography>
 
-      <Link to="/quiz">
-        <button>もう一度</button>
-      </Link>
-      <Link to="/">
-        <button>ホームへ</button>
-      </Link>
-    </div>
+      <Box mt={2}>
+        <Button
+          variant="contained"
+          color="primary"
+          component={Link}
+          to="/mypage"
+          sx={{ mr: 2 }}
+        >
+          マイページへ
+        </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          component={Link}
+          to="/"
+        >
+          ホームへ
+        </Button>
+      </Box>
+    </Box>
   );
 }
 
