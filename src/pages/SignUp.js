@@ -2,27 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Button, Box, Typography } from "@mui/material";
 
-function Login() {
+function SignUp() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
 
-  const handleLogin = () => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-
-    if (!storedUser || storedUser.email !== email || storedUser.password !== password) {
-      setError("メールアドレスまたはパスワードが間違っています");
-      return;
-    }
-
-    localStorage.setItem("isLoggedIn", "true");
-    navigate("/mypage");
+  const handleSignUp = () => {
+    const user = { email, password };
+    localStorage.setItem("user", JSON.stringify(user));
+    navigate("/login");
   };
 
   return (
     <Box p={4}>
-      <Typography variant="h5">Login</Typography>
+      <Typography variant="h5">Sign Up</Typography>
       <TextField
         label="Email"
         value={email}
@@ -38,12 +31,11 @@ function Login() {
         fullWidth
         margin="normal"
       />
-      {error && <Typography color="error">{error}</Typography>}
-      <Button variant="contained" color="primary" onClick={handleLogin} sx={{ mt: 2 }}>
-        ログイン
+      <Button variant="contained" color="primary" onClick={handleSignUp} sx={{ mt: 2 }}>
+        サインアップ
       </Button>
     </Box>
   );
 }
 
-export default Login;
+export default SignUp;
